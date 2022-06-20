@@ -10,7 +10,7 @@ import { Card, CardContent, Grid, ListItemButton, ListItemText, Checkbox } from 
 // 3. The map function is called to assign each array item with a key
 // 4. Think of lines 14-23 as a loop. For each todo in the todo list, we want to give the list item
 // a key, and it's own card shown in the UI
-const Todos = ({ todos }) => {
+const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
       return (
@@ -20,8 +20,8 @@ const Todos = ({ todos }) => {
             AddTodo.js. All we need to do is return the todo list item {todo.content} */}
             <CardContent>
               <ListItemButton component="a" href="#simple-list">
-                <Checkbox style={{paddingLeft:0}}/>
-                <Checkbox style={{color:"primary"}}/>
+                <Checkbox style={{paddingLeft:0, color:"primary"}}
+                onClick={() => {deleteTodo(todo.id)}}/>
                 <ListItemText primary={todo.content}/>
                 <ListItemText primary={todo.date}/>
                 <Card style={{marginTop:10}}/>
